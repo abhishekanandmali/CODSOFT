@@ -1,0 +1,93 @@
+:root {
+  --bg: #0f172a;
+  --panel: #111827;
+  --display: #020617;
+  --text: #e5e7eb;
+  --muted: #94a3b8;
+  --op: #2563eb;
+  --equal: #16a34a;
+  --fn: #334155;
+  --btn: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: radial-gradient(circle at top, #1e293b, var(--bg));
+  color: var(--text);
+}
+
+.calculator-wrapper {
+  width: min(92vw, 360px);
+}
+
+.calculator {
+  background-color: var(--panel);
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 14px 35px rgba(2, 6, 23, 0.45);
+}
+
+.display {
+  width: 100%;
+  height: 72px;
+  border: 1px solid #1e293b;
+  border-radius: 10px;
+  margin-bottom: 14px;
+  background-color: var(--display);
+  color: var(--text);
+  font-size: 1.9rem;
+  text-align: right;
+  padding: 0 12px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.btn {
+  height: 56px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--btn);
+  color: var(--text);
+  font-size: 1.15rem;
+  cursor: pointer;
+  transition: transform 0.07s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-op {
+  background-color: var(--op);
+}
+
+.btn-equal {
+  background-color: var(--equal);
+}
+
+.btn-fn {
+  background-color: var(--fn);
+  color: var(--muted);
+}
+
+.btn-zero {
+  grid-column: span 2;
+}

@@ -1,0 +1,333 @@
+:root {
+  --bg-color: #070b14;
+  --surface-color: #0f172a;
+  --surface-muted: #131c31;
+  --text-color: #e5e7eb;
+  --text-muted: #94a3b8;
+  --primary-color: #60a5fa;
+  --primary-strong: #3b82f6;
+  --card-bg: #111c33;
+  --border-color: #24324f;
+  --hero-overlay: rgba(2, 6, 23, 0.68);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  scroll-behavior: smooth;
+}
+
+.hero {
+  background: linear-gradient(to right, #0b1120, #0f1a31);
+  color: #ffffff;
+  padding: 1.2rem 5% 3rem;
+  min-height: 70vh;
+  background-image: url(background.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, var(--hero-overlay), rgba(15, 23, 42, 0.45));
+  z-index: -1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0.2rem 0;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.hero-content {
+  margin-top: clamp(2rem, 8vw, 5rem);
+  max-width: 700px;
+  animation: fadeUp 0.75s ease both;
+}
+
+.hero-content h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin: 0.8rem 0 1.2rem;
+}
+
+.tagline {
+  letter-spacing: 0.5px;
+  color: #dbeafe;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary-strong);
+  color: #eaf2ff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  background-color: #2563eb;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn:focus-visible,
+.project-link:focus-visible,
+.nav-links a:focus-visible,
+#contact a:focus-visible,
+footer a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.section {
+  padding: clamp(2.8rem, 6vw, 4.5rem) 5%;
+  animation: fadeUp 0.75s ease both;
+}
+
+.section h2 {
+  margin-bottom: 1rem;
+  color: #e2e8f0;
+}
+
+.alt-bg {
+  background-color: var(--surface-muted);
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: minmax(170px, 220px) 1fr;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: center;
+  max-width: 980px;
+}
+
+.profile-image {
+  width: min(100%, 220px);
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #334155;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.skills-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skills-list li {
+  background-color: #1e293b;
+  color: #bfdbfe;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-weight: 700;
+  border: 1px solid #334155;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: clamp(1rem, 3vw, 1.6rem);
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: #33507f;
+  box-shadow: 0 16px 38px rgba(0, 0, 0, 0.45);
+}
+
+.project-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+}
+
+.project-card h3,
+.project-card p {
+  padding: 0 1rem;
+}
+
+.project-card h3 {
+  margin-top: 0.9rem;
+}
+
+.project-card p {
+  margin: 0.6rem 0 1rem;
+  color: var(--text-muted);
+  flex-grow: 1;
+}
+
+.project-link {
+  display: inline-block;
+  align-self: flex-start;
+  margin: 0 1rem 1rem;
+  padding: 0.5rem 0.9rem;
+  background-color: var(--primary-strong);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  line-height: 1;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.project-link:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}
+
+#resume .btn {
+  margin-top: 0.8rem;
+}
+
+#contact a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+footer {
+  padding: 1.2rem 5%;
+  background-color: #05080f;
+  color: #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-top: 1px solid #1f2937;
+}
+
+footer a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    gap: 0.8rem;
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image {
+    justify-self: start;
+  }
+
+  .hero-content {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .hero {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  footer {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
